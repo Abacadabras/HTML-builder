@@ -11,8 +11,8 @@ const path = require('path');
     if (file.isFile()) {
       const pathFile = path.join(pathFiles, file.name);
       const nameFile = path.parse(pathFile);
-      const statFile = async () => await fs.stat(pathFile);
-      statFile().then((data) => console.log(`${nameFile.name} - ${nameFile.ext.slice(1)} - ${data.size}b`));
+      const statFile = fs.stat(pathFile);
+      statFile.then((data) => console.log(`${nameFile.name} - ${nameFile.ext.slice(1)} - ${data.size}b`));
     }
   });
 })();
