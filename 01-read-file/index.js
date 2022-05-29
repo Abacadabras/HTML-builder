@@ -3,11 +3,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const fileName = path.join(__dirname, 'text.txt');
-const stream = fs.createReadStream(fileName, 'utf-8');
+const pathToFile = path.join(__dirname, 'text.txt');
+const stream = fs.createReadStream(pathToFile);
 
-let data = '';
-
-stream.on('data', chunk => data += chunk);
-stream.on('end', () => console.log(data));
-stream.on('error', error => console.log('Error', error.message));
+stream.pipe(process.stdout);
